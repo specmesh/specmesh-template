@@ -61,11 +61,7 @@ jobs:
       - name: Increment patch number
         run: |
           ./gradlew cV
-          ./gradlew release clean
+          ./gradlew release
           ./gradlew cV
-      - name: Publish jars
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew publish
       - name: Push Docker images
         run: ./gradlew pushAppImage
