@@ -18,7 +18,6 @@ plugins {
     java
     jacoco
     `common-convention` apply false
-    `module-convention` apply false
     `coverage-convention`
     id("pl.allegro.tech.build.axion-release") version "1.14.3" // https://plugins.gradle.org/plugin/pl.allegro.tech.build.axion-release
     id("com.bmuschko.docker-remote-api") version "9.0.1" apply false
@@ -26,18 +25,31 @@ plugins {
 
 project.version = scmVersion.version
 
+allprojects {
+    tasks.jar {
+        onlyIf { sourceSets.main.get().allSource.files.isNotEmpty() }
+    }
+}
+
 subprojects {
     project.version = project.parent?.version!!
 
     apply(plugin = "common-convention")
-    apply(plugin = "module-convention")
 
     if (!name.startsWith("test-")) {
         apply(plugin = "jacoco")
     }
 
+    repositories {
+        mavenCentral()
+        maven {
+            url = uri("https://packages.confluent.io/maven/")
+            group = "io.confluent"
+        }
+    }
+
     extra.apply {
-        set("specMeshVersion", "0.1.0")         // https://mvnrepository.com/artifact/io.specmesh
+        set("specMeshVersion", "0.3.0")         // https://mvnrepository.com/artifact/io.specmesh
         set("kafkaVersion", "3.3.2")            // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
         set("spotBugsVersion", "4.4.2")         // https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-annotations
         set("guavaVersion", "31.1-jre")         // https://mvnrepository.com/artifact/com.google.guava/guava
@@ -49,7 +61,6 @@ subprojects {
         set("hamcrestVersion", "2.2")           // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core
     }
 
-    val specMeshVersion : String by extra
     val guavaVersion : String by extra
     val log4jVersion : String by extra
     val kafkaVersion : String by extra
