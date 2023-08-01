@@ -20,7 +20,7 @@ plugins {
     `common-convention` apply false
     `coverage-convention`
     id("pl.allegro.tech.build.axion-release") version "1.15.4" // https://plugins.gradle.org/plugin/pl.allegro.tech.build.axion-release
-    id("com.bmuschko.docker-remote-api") version "9.3.0" apply false
+    id("com.bmuschko.docker-remote-api") version "9.3.2" apply false
 }
 
 project.version = scmVersion.version
