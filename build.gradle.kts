@@ -19,7 +19,7 @@ plugins {
     jacoco
     `common-convention` apply false
     `coverage-convention`
-    id("pl.allegro.tech.build.axion-release") version "1.18.2" // https://plugins.gradle.org/plugin/pl.allegro.tech.build.axion-release
+    id("pl.allegro.tech.build.axion-release") version "1.18.7" // https://plugins.gradle.org/plugin/pl.allegro.tech.build.axion-release
     id("com.bmuschko.docker-remote-api") version "9.4.0" apply false
 }
 
