@@ -52,7 +52,7 @@ subprojects {
         set("specMeshVersion", "0.3.0")         // https://mvnrepository.com/artifact/io.specmesh
         set("kafkaVersion", "3.3.2")            // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
         set("spotBugsVersion", "4.4.2")         // https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-annotations
-        set("guavaVersion", "33.2.1-jre")         // https://mvnrepository.com/artifact/com.google.guava/guava
+        set("guavaVersion", "33.3.1-jre")         // https://mvnrepository.com/artifact/com.google.guava/guava
         set("log4jVersion", "2.23.1")           // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
 
         set("junitVersion", "5.11.1")            // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
